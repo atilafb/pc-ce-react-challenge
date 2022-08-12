@@ -1,7 +1,9 @@
+import Checkout from './components/Checkout'
+
 function App() {
   return (
     <div className="App">
-      <h1>INITIAL PROJECT</h1>
+      <Checkout />
     </div>
   );
 }
