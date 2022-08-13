@@ -1,9 +1,9 @@
-import Checkout from './components/Checkout'
+import Recognicao from './components/Recognicao';
 
 function App() {
   return (
     <div className="App">
-      <Checkout />
+      <Recognicao />
     </div>
   );
 }
