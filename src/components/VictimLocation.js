@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField'
 
-function VictimLocation() {
+export default function VictimLocation() {
   const [checked, setChecked] = useState("");
   const vitimaSocorrida = checked === 'socorrida'
 
@@ -37,5 +37,3 @@ function VictimLocation() {
   </>
   );
 }
-
-export default VictimLocation;
