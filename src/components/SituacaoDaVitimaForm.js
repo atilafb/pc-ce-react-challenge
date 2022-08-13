@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField'
 
-export default function SituacaoDaVitima() {
+export default function SituacaoDaVitimaForm() {
   const [checked, setChecked] = useState("");
   const vitimaSocorrida = checked === 'socorrida'
 
