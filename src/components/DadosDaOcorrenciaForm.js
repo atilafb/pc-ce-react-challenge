@@ -6,7 +6,11 @@ import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 
 export default function DadosDaOcorrenciaForm() {
   const [cidade, setCidade] = useState("");
@@ -84,10 +88,10 @@ export default function DadosDaOcorrenciaForm() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
-            <InputLabel id="diaDaSemana">Dia da Semana</InputLabel>
+            <InputLabel id="dia-da-semana">Dia da Semana</InputLabel>
             <Select
-              labelId="diaDaSemana"
-              id="diaDaSemana"
+              labelId="dia-da-semana"
+              id="dia-da-semana"
               value={diaDaSemana}
               label="diaDaSemana"
               onChange={handleChange}
@@ -111,13 +115,25 @@ export default function DadosDaOcorrenciaForm() {
         <Grid item xs={12}>
           <TextField
             required
-            id="horaDoCrime"
-            name="horaDoCrime"
+            id="hora-do-crime"
+            name="hora-do-crime"
             label="Hora provável do crime"
             fullWidth
-            autoComplete="shipping country"
             variant="standard"
           />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Há cameras de vigilância no local ou entorno?</FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormControlLabel value="camera-sim" control={<Radio />} label="Sim" />
+              <FormControlLabel value="camera-nao" control={<Radio />} label="Não" />
+            </RadioGroup>
+          </FormControl>
         </Grid>
       </Grid>
     </React.Fragment>
