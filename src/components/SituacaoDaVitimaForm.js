@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField'
 
-export default function VictimLocation() {
+export default function SituacaoDaVitima() {
   const [checked, setChecked] = useState("");
   const vitimaSocorrida = checked === 'socorrida'
 
@@ -22,7 +22,7 @@ export default function VictimLocation() {
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
       >
-        <FormControlLabel value="nolocal" control={<Radio onClick={handleChange}/>} label="Vítima no local" />
+        <FormControlLabel value="no-local" control={<Radio onClick={handleChange}/>} label="Vítima no local" />
         <FormControlLabel value="socorrida" control={<Radio onClick={handleChange}/>} label="Vítima socorrida" />
         <FormControlLabel 
         control={ 
