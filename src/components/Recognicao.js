@@ -11,20 +11,26 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AddressForm from './DadosDaOcorrenciaForm';
-import PaymentForm from './PaymentForm';
+import SituacaoDaVitimaForm from './SituacaoDaVitimaForm';
+import DadosDaOcorrenciaForm from './DadosDaOcorrenciaForm';
+import SuspeitosForm from './SuspeitosForm';
+import DadosDaVitimaForm from './DadosDaVitimaForm';
 import Review from './Review';
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Situação da Vítima', 'Dados da Ocorrência', 'Suspeitos', 'Dados da Vítima', 'Review your form'];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <SituacaoDaVitimaForm />;
     case 1:
-      return <PaymentForm />;
+      return <DadosDaOcorrenciaForm />;
     case 2:
-      return <Review />;
+      return <SuspeitosForm />;
+    case 3:
+      return <DadosDaVitimaForm />
+    case 4:
+      return <Review />
     default:
       throw new Error('Unknown step');
   }
@@ -61,7 +67,7 @@ export default function Recognicao() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
             Recognição
