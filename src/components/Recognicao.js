@@ -16,6 +16,8 @@ import DadosDaOcorrenciaForm from './DadosDaOcorrenciaForm';
 import SuspeitosForm from './SuspeitosForm';
 import DadosDaVitimaForm from './DadosDaVitimaForm';
 import RevisaoFormulario from './RevisaoFormulario';
+import RecognicaoDocument from './RecognicaoDocument';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 const steps = ['Situação da Vítima', 'Dados da Ocorrência', 'Suspeitos', 'Dados da Vítima', 'Revisão de Formulário'];
 
@@ -245,9 +247,15 @@ export default function Recognicao() {
                 <Typography variant="h5" gutterBottom>
                   Formulário preenchido.
                 </Typography>
-                <Typography variant="subtitle1">
-                  Aguarde enquanto está sendo gerado o PDF.
-                </Typography>
+                <PDFDownloadLink document={<RecognicaoDocument />} fileName="RECOGNIÇÃO">
+                  {({ loading }) =>
+                    loading ? (
+                      <Typography variant="subtitle1"> Aguarde enquanto está sendo gerado o PDF.</Typography>
+                    ) : (
+                      <Button variant="contained">Download</Button>
+                    )
+                  }
+                </PDFDownloadLink>
               </React.Fragment>
             ) : (
               <React.Fragment>
