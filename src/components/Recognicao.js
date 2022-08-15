@@ -22,7 +22,7 @@ const steps = ['Situação da Vítima', 'Dados da Ocorrência', 'Suspeitos', 'Da
 function getStepContent(step, onChange, formValues, errors) {
   switch (step) {
     case 0:
-      return <SituacaoDaVitimaForm onChange={onChange} formValues={formValues} errors={errors}/>;
+      return <SituacaoDaVitimaForm onChange={onChange} formValues={formValues} errors={errors} />;
     case 1:
       return <DadosDaOcorrenciaForm />;
     case 2:
@@ -43,6 +43,9 @@ const getIsFormValid = (formValues, errors, step) => {
     if (errors.localDaVitima || !formValues.localDaVitima) {
       return false
     }
+    if (errors.nomeDoHospital || formValues.localDaVitima === 'socorrida' && !formValues.nomeDoHospital) {
+      return false
+    }
   }
   return true
 }
@@ -51,6 +54,9 @@ const getFormErrors = (formValues) => {
     const errors = {}
     if (formValues.localDaVitima === '') {
       errors.localDaVitima = 'Local da vitima deve ser preenchido'
+    }
+    if (formValues.nomeDoHospital === '') {
+      errors.nomeDoHospital = 'Nome do hospital deve ser preenchido'
     }
     return errors
   }
