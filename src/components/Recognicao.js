@@ -247,7 +247,7 @@ export default function Recognicao() {
                 <Typography variant="h5" gutterBottom>
                   Formulário preenchido.
                 </Typography>
-                <PDFDownloadLink document={<RecognicaoDocument />} fileName="RECOGNIÇÃO">
+                <PDFDownloadLink document={<RecognicaoDocument formValues={formValues}/>} fileName="RECOGNIÇÃO">
                   {({ loading }) =>
                     loading ? (
                       <Typography variant="subtitle1"> Aguarde enquanto está sendo gerado o PDF.</Typography>

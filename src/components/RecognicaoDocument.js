@@ -44,7 +44,33 @@ const styles = StyleSheet.create({
   },
 });
 
-const RecognicaoDocument = () => {
+const RecognicaoDocument = ({ formValues }) => {
+  const localDaVitima = formValues.localDaVitima || ''
+  const nomeDoHospital = formValues.nomeDoHospital || ''
+
+  const endereco = formValues.endereco || ''
+  const cidade = formValues.cidade || ''
+  const bairro = formValues.bairro || ''
+  const ais = formValues.ais || ''
+  const diaDaSemana = formValues.diaDaSemana || ''
+  const data = formValues.data || ''
+  const horaDoCrime = formValues.horaDoCrime || ''
+  const cameras = formValues.cameras || ''
+
+  const suspeitoCheck = formValues.suspeitoCheck || ''
+  const nomeCognome = formValues.nomeCognome || ''
+  const infoRelevante = formValues.infoRelevante || ''
+
+  const nome = formValues.nome || ''
+  const nomeDaMae = formValues.nomeDaMae || ''
+  const nomeDoPai = formValues.nomeDoPai || ''
+  const dn = formValues.dn || ''
+  const sexo = formValues.sexo || ''
+  const enderecoDaVitima = formValues.enderecoDaVitima || ''
+  const cidadeDaVitima = formValues.cidadeDaVitima || ''
+  const bairroDaVitima = formValues.bairroDaVitima || ''
+  const referencia = formValues.referencia || ''
+  const escolaridade = formValues.escolaridade || ''
 
   return(
     <Document>
@@ -52,39 +78,39 @@ const RecognicaoDocument = () => {
         <Text style={[styles.title, styles.bold]}>
           RECOGNIÇÃO VISUOGRÁFICA DE LOCAL DE CRIME nº   /2020
         </Text>
-        <Text style={styles.subtitle}>( )Vítima no local ( ) Vítima socorrida - Hospital: ______________</Text>
+        <Text style={styles.subtitle}>(X)Vítima {localDaVitima} - Hospital: {nomeDoHospital}</Text>
         <View style={styles.table}>
           <View style={[styles.row, styles.bold, styles.header]}>
             <Text style={styles.subtitle2}>Dados essenciais da ocorrência</Text>
           </View>
-          <Text style={styles.text}>Endereço: </Text>
-          <Text style={styles.text}>Bairro: </Text>
-          <Text style={[styles.text, styles.bold]}>AIS: </Text>
-          <Text style={styles.text}>Cidade: </Text>
-          <Text style={styles.text}>Data: </Text>
-          <Text style={styles.text}>Dia da Semana: </Text>
-          <Text style={styles.text}>Hora provável do crime: </Text>
-          <Text style={styles.text}>Há câmeras de vigilância no local ou no entorno? </Text>
+          <Text style={styles.text}>Endereço: {endereco}</Text>
+          <Text style={styles.text}>Bairro: {bairro}</Text>
+          <Text style={[styles.text, styles.bold]}>AIS: {ais}</Text>
+          <Text style={styles.text}>Cidade: {cidade}</Text>
+          <Text style={styles.text}>Data: {data}</Text>
+          <Text style={styles.text}>Dia da Semana: {diaDaSemana}</Text>
+          <Text style={styles.text}>Hora provável do crime: {horaDoCrime}</Text>
+          <Text style={styles.text}>Há câmeras de vigilância no local ou no entorno? {cameras}</Text>
           <View style={[styles.row, styles.bold, styles.header]}>
             <Text style={styles.subtitle2}>Suspeitos</Text>
           </View>
-          <Text style={styles.text}>Há suspeitos? </Text>
-          <Text style={styles.text}>Nome(s) / Cognome(s): </Text>
-          <Text style={styles.text}>Informações relevantes sobre o(s) suspeito(s): </Text>
+          <Text style={styles.text}>Há suspeitos? {suspeitoCheck}</Text>
+          <Text style={styles.text}>Nome(s) / Cognome(s): {nomeCognome}</Text>
+          <Text style={styles.text}>Informações relevantes sobre o(s) suspeito(s): {infoRelevante}</Text>
           <View style={[styles.row, styles.bold, styles.header]}>
             <Text style={styles.subtitle2}>Dados da Vítima</Text>
           </View>
-          <Text style={styles.text}>Nome: </Text>
-          <Text style={styles.text}>D.N: </Text>
-          <Text style={styles.text}>Filiação </Text>
-          <Text style={styles.text}>Nome da Mãe: </Text>
-          <Text style={styles.text}>Nome do Pai: </Text>
-          <Text style={styles.text}>Sexo: </Text>
-          <Text style={styles.text}>Endereço: </Text>
-          <Text style={styles.text}>Bairro: </Text>
-          <Text style={styles.text}>Cidade: </Text>
-          <Text style={styles.text}>Referência: </Text>
-          <Text style={styles.text}>Escolaridade: </Text>
+          <Text style={styles.text}>Nome: {nome}</Text>
+          <Text style={styles.text}>D.N: {dn}</Text>
+          <Text style={styles.text}>Filiação</Text>
+          <Text style={styles.text}>Nome da Mãe: {nomeDaMae}</Text>
+          <Text style={styles.text}>Nome do Pai: {nomeDoPai}</Text>
+          <Text style={styles.text}>Sexo: {sexo}</Text>
+          <Text style={styles.text}>Endereço: {enderecoDaVitima}</Text>
+          <Text style={styles.text}>Bairro: {bairroDaVitima}</Text>
+          <Text style={styles.text}>Cidade: {cidadeDaVitima}</Text>
+          <Text style={styles.text}>Referência: {referencia}</Text>
+          <Text style={styles.text}>Escolaridade: {escolaridade}</Text>
         </View>
       </Page>
     </Document>
