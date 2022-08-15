@@ -24,7 +24,7 @@ function getStepContent(step, onChange, formValues, errors) {
     case 0:
       return <SituacaoDaVitimaForm onChange={onChange} formValues={formValues} errors={errors} />;
     case 1:
-      return <DadosDaOcorrenciaForm />;
+      return <DadosDaOcorrenciaForm onChange={onChange} formValues={formValues} errors={errors} />;
     case 2:
       return <SuspeitosForm />;
     case 3:
@@ -46,6 +46,31 @@ const getIsFormValid = (formValues, errors, step) => {
     if (errors.nomeDoHospital || formValues.localDaVitima === 'socorrida' && !formValues.nomeDoHospital) {
       return false
     }
+  } else if (step === 1) {
+    if (errors.endereco || !formValues.endereco) {
+      return false
+    }
+    if (errors.cidade || !formValues.cidade) {
+      return false
+    }
+    if (errors.bairro || !formValues.bairro) {
+      return false
+    }
+    if (errors.ais || !formValues.ais) {
+      return false
+    }
+    if (errors.diaDaSemana || !formValues.diaDaSemana) {
+      return false
+    }
+    if (errors.data || !formValues.data) {
+      return false
+    }
+    if (errors.horaDoCrime || !formValues.horaDoCrime) {
+      return false
+    }
+    if (errors.cameras || !formValues.cameras) {
+      return false
+    }
   }
   return true
 }
@@ -57,6 +82,30 @@ const getFormErrors = (formValues) => {
     }
     if (formValues.nomeDoHospital === '') {
       errors.nomeDoHospital = 'Nome do hospital deve ser preenchido'
+    }
+    if (formValues.endereco === '') {
+      errors.endereco = 'Endereço deve ser preenchido'
+    }
+    if (formValues.cidade === '') {
+      errors.cidade = 'Cidade deve ser preenchido'
+    }
+    if (formValues.bairro === '') {
+      errors.bairro = 'Bairro deve ser preenchido'
+    }
+    if (formValues.ais === '') {
+      errors.ais = 'AIS deve ser preenchido'
+    }
+    if (formValues.diaDaSemana === '') {
+      errors.diaDaSemana = 'Dia da Semana deve ser preenchido'
+    }
+    if (formValues.data === '') {
+      errors.data = 'Data deve ser preenchido'
+    }
+    if (formValues.horaDoCrime === '') {
+      errors.horaDoCrime = 'Hora do Crime deve ser preenchido'
+    }
+    if (formValues.cameras === '') {
+      errors.cameras = 'Cameras deve ser preenchido'
     }
     return errors
   }
@@ -103,6 +152,7 @@ export default function Recognicao() {
           <Typography component="h1" variant="h4" align="center">
             Recognição
           </Typography>
+          <pre>{JSON.stringify(formValues, null, 2)}</pre>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
               <Step key={label}>

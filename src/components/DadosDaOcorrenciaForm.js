@@ -12,15 +12,41 @@ import Select from '@mui/material/Select';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 
-export default function DadosDaOcorrenciaForm() {
-  const [cidade, setCidade] = useState("");
-  const [bairro, setBairro] = useState("");
-  const [AIS, setAIS] = useState("");
-  const [diaDaSemana, setDiaDaSemana] = useState("");
+export default function DadosDaOcorrenciaForm({ onChange, formValues, errors }) {
+  
+  const endereco = formValues.endereco || ''
+  const cidade = formValues.cidade || ''
+  const bairro = formValues.bairro || ''
+  const ais = formValues.ais || ''
+  const diaDaSemana = formValues.diaDaSemana || ''
+  const data = formValues.data || ''
+  const horaDoCrime = formValues.horaDoCrime || ''
+  const cameras = formValues.cameras || ''
 
-  const handleChange = (event) => {
-    setCidade(event.target.value);
-  };
+  const handleEndereco = (event) => {
+    onChange('endereco', event.target.value)
+  }
+  const handleCidade = (event) => {
+    onChange('cidade', event.target.value)
+  }
+  const handleBairro = (event) => {
+    onChange('bairro', event.target.value)
+  }
+  const handleAIS = (event) => {
+    onChange('ais', event.target.value)
+  }
+  const handleDiaDaSemana = (event) => {
+    onChange('diaDaSemana', event.target.value)
+  }
+  const handleData = (event) => {
+    onChange('data', event.target.value)
+  }
+  const handleHoraDoCrime = (event) => {
+    onChange('horaDoCrime', event.target.value)
+  }
+  const handleCameras = (event) => {
+    onChange('cameras', event.target.value)
+  }
 
   return (
     <React.Fragment>
@@ -36,17 +62,21 @@ export default function DadosDaOcorrenciaForm() {
             label="Endereço"
             fullWidth
             variant="standard"
+            value={endereco}
+            onChange={handleEndereco}
+            error={errors?.endereco}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
-          <FormControl fullWidth>
+          <FormControl required fullWidth>
             <InputLabel id="cidade">Cidade</InputLabel>
             <Select
               labelId="cidade"
               id="cidade"
-              value={cidade}
               label="Cidade"
-              onChange={handleChange}
+              value={cidade}
+              onChange={handleCidade}
+              error={errors?.cidade}
             >
               <MenuItem value={'Fortaleza'}>Fortaleza</MenuItem>
               <MenuItem value={'Maracanaú'}>Maracanaú</MenuItem>
@@ -55,14 +85,15 @@ export default function DadosDaOcorrenciaForm() {
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <FormControl fullWidth>
+          <FormControl required fullWidth>
             <InputLabel id="bairro">Bairro</InputLabel>
             <Select
               labelId="bairro"
               id="bairro"
-              value={bairro}
               label="Bairro"
-              onChange={handleChange}
+              value={bairro}
+              onChange={handleBairro}
+              error={errors?.bairro}
             >
               <MenuItem value={'Centro'}>Centro</MenuItem>
               <MenuItem value={'Aldeota'}>Aldeota</MenuItem>
@@ -71,14 +102,15 @@ export default function DadosDaOcorrenciaForm() {
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <FormControl fullWidth>
+          <FormControl required fullWidth>
             <InputLabel id="AIS">AIS</InputLabel>
             <Select
               labelId="AIS"
               id="AIS"
-              value={AIS}
               label="AIS"
-              onChange={handleChange}
+              value={ais}
+              onChange={handleAIS}
+              error={errors?.ais}
             >
               <MenuItem value={'AIS 01'}>AIS 01</MenuItem>
               <MenuItem value={'AIS 02'}>AIS 02</MenuItem>
@@ -87,14 +119,15 @@ export default function DadosDaOcorrenciaForm() {
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormControl fullWidth>
+          <FormControl required fullWidth>
             <InputLabel id="dia-da-semana">Dia da Semana</InputLabel>
             <Select
               labelId="dia-da-semana"
               id="dia-da-semana"
-              value={diaDaSemana}
               label="diaDaSemana"
-              onChange={handleChange}
+              value={diaDaSemana}
+              onChange={handleDiaDaSemana}
+              error={errors?.diaDaSemana}
             >
               <MenuItem value={'segundaFeira'}>Segunda-Feira</MenuItem>
               <MenuItem value={'tercaFeira'}>Terça-Feira</MenuItem>
@@ -110,6 +143,9 @@ export default function DadosDaOcorrenciaForm() {
             label="Data"
             fullWidth
             variant="standard"
+            value={data}
+            onChange={handleData}
+            error={errors?.data}
           />
         </Grid>
         <Grid item xs={12}>
@@ -120,6 +156,9 @@ export default function DadosDaOcorrenciaForm() {
             label="Hora provável do crime"
             fullWidth
             variant="standard"
+            value={horaDoCrime}
+            onChange={handleHoraDoCrime}
+            error={errors?.horaDoCrime}
           />
         </Grid>
         <Grid item xs={12}>
@@ -129,6 +168,9 @@ export default function DadosDaOcorrenciaForm() {
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              value={cameras}
+              onChange={handleCameras}
+              error={errors?.cameras}
             >
               <FormControlLabel value="camera-sim" control={<Radio />} label="Sim" />
               <FormControlLabel value="camera-nao" control={<Radio />} label="Não" />
