@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -12,13 +11,49 @@ import Select from '@mui/material/Select';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 
-export default function DadosDaVitimaForm() {
-  const [cidade, setCidade] = useState("");
-  const [bairro, setBairro] = useState("");
-  
-  const handleChange = (event) => {
-    setCidade(event.target.value);
-  };
+export default function DadosDaVitimaForm({ onChange, formValues, errors }) {
+
+  const nome = formValues.nome || ''
+  const nomeDaMae = formValues.nomeDaMae || ''
+  const nomeDoPai = formValues.nomeDoPai || ''
+  const dn = formValues.dn || ''
+  const sexo = formValues.sexo || ''
+  const enderecoDaVitima = formValues.enderecoDaVitima || ''
+  const cidadeDaVitima = formValues.cidadeDaVitima || ''
+  const bairroDaVitima = formValues.bairroDaVitima || ''
+  const referencia = formValues.referencia || ''
+  const escolaridade = formValues.escolaridade || ''
+
+  const handleNome = (event) => {
+    onChange('nome', event.target.value)
+  }
+  const handleNomeDaMae = (event) => {
+    onChange('nomeDaMae', event.target.value)
+  }
+  const handleNomeDoPai = (event) => {
+    onChange('nomeDoPai', event.target.value)
+  }
+  const handleDN = (event) => {
+    onChange('dn', event.target.value)
+  }
+  const handleSexo = (event) => {
+    onChange('sexo', event.target.value)
+  }
+  const handleEnderecoDaVitima = (event) => {
+    onChange('enderecoDaVitima', event.target.value)
+  }
+  const handleCidadeDaVitima = (event) => {
+    onChange('cidadeDaVitima', event.target.value)
+  }
+  const handleBairroDaVitima = (event) => {
+    onChange('bairroDaVitima', event.target.value)
+  }
+  const handleReferencia = (event) => {
+    onChange('referencia', event.target.value)
+  }
+  const handleEscolaridade = (event) => {
+    onChange('escolaridade', event.target.value)
+  }
 
   return (
     <React.Fragment>
@@ -34,6 +69,9 @@ export default function DadosDaVitimaForm() {
             label="Nome"
             fullWidth
             variant="standard"
+            value={nome}
+            onChange={handleNome}
+            error={errors?.nome}
           />
         </Grid>
         <Grid item xs={12}>
@@ -46,6 +84,9 @@ export default function DadosDaVitimaForm() {
             label="Nome da Mãe"
             fullWidth
             variant="standard"
+            value={nomeDaMae}
+            onChange={handleNomeDaMae}
+            error={errors?.nomeDaMae}
           />
           </FormControl>
         </Grid>
@@ -58,6 +99,9 @@ export default function DadosDaVitimaForm() {
               label="Nome do Pai"
               fullWidth
               variant="standard"
+              value={nomeDoPai}
+              onChange={handleNomeDoPai}
+              error={errors?.nomeDoPai}
             />
           </FormControl>
         </Grid>
@@ -69,15 +113,21 @@ export default function DadosDaVitimaForm() {
             label="D.N"
             fullWidth
             variant="standard"
+            value={dn}
+            onChange={handleDN}
+            error={errors?.dn}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormControl>
+          <FormControl required>
             <FormLabel id="demo-radio-buttons-group-label">Sexo</FormLabel>
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              value={sexo}
+              onChange={handleSexo}
+              error={errors?.sexo}
             >
               <FormControlLabel value="masculino" control={<Radio />} label="Masculino" />
               <FormControlLabel value="feminino" control={<Radio />} label="Feminino" />
@@ -92,6 +142,9 @@ export default function DadosDaVitimaForm() {
             label="Endereço"
             fullWidth
             variant="standard"
+            value={enderecoDaVitima}
+            onChange={handleEnderecoDaVitima}
+            error={errors?.enderecoDaVitima}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -100,9 +153,9 @@ export default function DadosDaVitimaForm() {
             <Select
               labelId="cidade"
               id="cidade"
-              value={cidade}
-              label="Cidade"
-              onChange={handleChange}
+              value={cidadeDaVitima}
+              onChange={handleCidadeDaVitima}
+              error={errors?.cidadeDaVitima}
             >
               <MenuItem value={'Fortaleza'}>Fortaleza</MenuItem>
               <MenuItem value={'Maracanaú'}>Maracanaú</MenuItem>
@@ -116,9 +169,9 @@ export default function DadosDaVitimaForm() {
             <Select
               labelId="bairro"
               id="bairro"
-              value={bairro}
-              label="Bairro"
-              onChange={handleChange}
+              value={bairroDaVitima}
+              onChange={handleBairroDaVitima}
+              error={errors?.bairroDaVitima}
             >
               <MenuItem value={'Centro'}>Centro</MenuItem>
               <MenuItem value={'Aldeota'}>Aldeota</MenuItem>
@@ -134,40 +187,29 @@ export default function DadosDaVitimaForm() {
             label="Referência"
             fullWidth
             variant="standard"
+            value={referencia}
+            onChange={handleReferencia}
+            error={errors?.referencia}
           />
         </Grid>
         <Grid item xs={12}>
           <FormControl>
             <FormLabel id="demo-radio-buttons-group-label">Escolaridade</FormLabel>
             <RadioGroup
-              row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              value={escolaridade}
+              onChange={handleEscolaridade}
+              error={errors?.escolaridade}
             >
-              <RadioGroup 
-                aria-labelledby="demo-radio-buttons-group-label"
-                name="radio-buttons-group"
-                >
-                  <FormControlLabel value="analfabeto" control={<Radio />} label="Analfabeto" />
-                  <FormControlLabel value="EF-incompleto" control={<Radio />} label="E.F Incompleto" />
-                  <FormControlLabel value="EF-completo" control={<Radio />} label="E.F Completo" />
-              </RadioGroup>
-              <RadioGroup 
-                aria-labelledby="demo-radio-buttons-group-label"
-                name="radio-buttons-group"
-                >
-                  <FormControlLabel value="EM-incompleto" control={<Radio />} label="E.M Incompleto" />
-                  <FormControlLabel value="EM-completo" control={<Radio />} label="E.M Completo" />
-                  <FormControlLabel value="ES-incompleto" control={<Radio />} label="E.S Incompleto" />
-              </RadioGroup>
-              <RadioGroup 
-                aria-labelledby="demo-radio-buttons-group-label"
-                name="radio-buttons-group"
-                >
-                  <FormControlLabel value="ES-completo" control={<Radio />} label="E.S Completo" />
-                  <FormControlLabel value="nao-informado" control={<Radio />} label="Não informado" />
-                  
-              </RadioGroup>
+              <FormControlLabel value="analfabeto" control={<Radio />} label="Analfabeto" />
+              <FormControlLabel value="EF-incompleto" control={<Radio />} label="E.F Incompleto" />
+              <FormControlLabel value="EF-completo" control={<Radio />} label="E.F Completo" />
+              <FormControlLabel value="EM-incompleto" control={<Radio />} label="E.M Incompleto" />
+              <FormControlLabel value="EM-completo" control={<Radio />} label="E.M Completo" />
+              <FormControlLabel value="ES-incompleto" control={<Radio />} label="E.S Incompleto" />
+              <FormControlLabel value="ES-completo" control={<Radio />} label="E.S Completo" />
+              <FormControlLabel value="nao-informado" control={<Radio />} label="Não informado" />
             </RadioGroup>
           </FormControl>
         </Grid>

@@ -28,7 +28,7 @@ function getStepContent(step, onChange, formValues, errors) {
     case 2:
       return <SuspeitosForm onChange={onChange} formValues={formValues} errors={errors} />;
     case 3:
-      return <DadosDaVitimaForm />
+      return <DadosDaVitimaForm onChange={onChange} formValues={formValues} errors={errors} />
     case 4:
       return <Review />
     default:
@@ -81,6 +81,37 @@ const getIsFormValid = (formValues, errors, step) => {
     if (errors.infoRelevante || formValues.suspeitoCheck === 'suspeitos-sim' && !formValues.infoRelevante) {
       return false
     }
+  } else if (step === 3) {
+    if (errors.nome || !formValues.nome) {
+      return false
+    }
+    if (errors.nomeDoPai || !formValues.nomeDoPai) {
+      return false
+    }
+    if (errors.nomeDaMae || !formValues.nomeDaMae) {
+      return false
+    }
+    if (errors.dn || !formValues.dn) {
+      return false
+    }
+    if (errors.sexo || !formValues.sexo) {
+      return false
+    }
+    if (errors.enderecoDaVitima || !formValues.enderecoDaVitima) {
+      return false
+    }
+    if (errors.cidadeDaVitima || !formValues.cidadeDaVitima) {
+      return false
+    }
+    if (errors.bairroDaVitima || !formValues.bairroDaVitima) {
+      return false
+    }
+    if (errors.referencia || !formValues.referencia) {
+      return false
+    }
+    if (errors.escolaridade || !formValues.escolaridade) {
+      return false
+    }
   }
   return true
 }
@@ -125,6 +156,36 @@ const getFormErrors = (formValues) => {
     }
     if (formValues.infoRelevante === '') {
       errors.infoRelevante = 'Informações relevantes deve ser preenchido'
+    }
+    if (formValues.nome === '') {
+      errors.nome = 'Nome deve ser preenchido'
+    }
+    if (formValues.nomeDaMae === '') {
+      errors.nomeDaMae = 'Nome da mãe deve ser preenchido'
+    }
+    if (formValues.nomeDoPai === '') {
+      errors.nomeDoPai = 'Nome do pai deve ser preenchido'
+    }
+    if (formValues.dn === '') {
+      errors.dn = 'D.N deve ser preenchido'
+    }
+    if (formValues.sexo === '') {
+      errors.sexo = 'Sexo deve ser preenchido'
+    }
+    if (formValues.enderecoDaVitima === '') {
+      errors.enderecoDaVitima = 'Endereço da vitima deve ser preenchido'
+    }
+    if (formValues.cidadeDaVitima === '') {
+      errors.cidadeDaVitima = 'Cidade da vitima deve ser preenchido'
+    }
+    if (formValues.bairroDaVitima === '') {
+      errors.bairroDaVitima = 'Bairro da vitima deve ser preenchido'
+    }
+    if (formValues.referencia === '') {
+      errors.referencia = 'Referência deve ser preenchido'
+    }
+    if (formValues.escolaridade === '') {
+      errors.escolaridade = 'Escolaridade deve ser preenchido'
     }
     return errors
   }
