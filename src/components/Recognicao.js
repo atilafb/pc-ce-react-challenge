@@ -26,7 +26,7 @@ function getStepContent(step, onChange, formValues, errors) {
     case 1:
       return <DadosDaOcorrenciaForm onChange={onChange} formValues={formValues} errors={errors} />;
     case 2:
-      return <SuspeitosForm />;
+      return <SuspeitosForm onChange={onChange} formValues={formValues} errors={errors} />;
     case 3:
       return <DadosDaVitimaForm />
     case 4:
@@ -71,6 +71,16 @@ const getIsFormValid = (formValues, errors, step) => {
     if (errors.cameras || !formValues.cameras) {
       return false
     }
+  } else if (step === 2) {
+    if (errors.suspeitoCheck || !formValues.suspeitoCheck) {
+      return false
+    }
+    if (errors.nomeCognome || formValues.suspeitoCheck === 'suspeitos-sim' && !formValues.nomeCognome) {
+      return false
+    }
+    if (errors.infoRelevante || formValues.suspeitoCheck === 'suspeitos-sim' && !formValues.infoRelevante) {
+      return false
+    }
   }
   return true
 }
@@ -106,6 +116,15 @@ const getFormErrors = (formValues) => {
     }
     if (formValues.cameras === '') {
       errors.cameras = 'Cameras deve ser preenchido'
+    }
+    if (formValues.suspeitoCheck === '') {
+      errors.suspeitoCheck = 'Campo de suspeitos deve ser preenchido'
+    }
+    if (formValues.nomeCognome === '') {
+      errors.nomeCognome = 'Nome e cognome deve ser preenchido'
+    }
+    if (formValues.infoRelevante === '') {
+      errors.infoRelevante = 'Informações relevantes deve ser preenchido'
     }
     return errors
   }
