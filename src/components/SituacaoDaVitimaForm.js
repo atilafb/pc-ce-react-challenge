@@ -33,11 +33,12 @@ export default function SituacaoDaVitimaForm({ onChange, formValues, errors }) {
         <FormControlLabel value='No local' control={<Radio onClick={handleLocalDaVitima}/>} label="Vítima no local" error={errors?.localDaVitima}/>
         <FormControlLabel value='Socorrida' control={<Radio onClick={handleLocalDaVitima}/>} label="Vítima socorrida" error={errors?.localDaVitima}/>
         <FormControlLabel 
+        sx={{ ml: 1 }}
         control={ 
           vitimaFoiSocorrida ? 
-          (<TextField required id="filled-required" label="Hospital" variant="filled" value={nomeDoHospital} onChange={handleNomeDoHospital} error={errors?.nomeDoHospital}/>) 
+          (<TextField required id="filled-required" label="Hospital" variant="filled" size='small' value={nomeDoHospital} onChange={handleNomeDoHospital} error={errors?.nomeDoHospital}/>) 
           : 
-          (<TextField disabled id="filled-required" label="Hospital" variant="filled" />)
+          (<TextField disabled id="filled-required" label="Hospital" variant="filled" size='small' />)
         }
         />
       </RadioGroup>
