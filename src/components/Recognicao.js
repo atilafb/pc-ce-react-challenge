@@ -43,7 +43,7 @@ const getIsFormValid = (formValues, errors, step) => {
     if (errors.localDaVitima || !formValues.localDaVitima) {
       return false
     }
-    if (errors.nomeDoHospital || formValues.localDaVitima === 'socorrida' && !formValues.nomeDoHospital) {
+    if (errors.nomeDoHospital || formValues.localDaVitima === 'Socorrida' && !formValues.nomeDoHospital) {
       return false
     }
   } else if (step === 1) {

@@ -10,7 +10,7 @@ export default function SituacaoDaVitimaForm({ onChange, formValues, errors }) {
   const localDaVitima = formValues.localDaVitima || ''
   const nomeDoHospital = formValues.nomeDoHospital || ''
 
-  const vitimaFoiSocorrida = localDaVitima === 'socorrida'
+  const vitimaFoiSocorrida = localDaVitima === 'Socorrida'
 
   const handleLocalDaVitima = (event) => {
     onChange('localDaVitima', event.target.value)
@@ -30,8 +30,8 @@ export default function SituacaoDaVitimaForm({ onChange, formValues, errors }) {
         value={localDaVitima}
         onChange={handleLocalDaVitima}
       >
-        <FormControlLabel value='no-local' control={<Radio onClick={handleLocalDaVitima}/>} label="Vítima no local" error={errors?.localDaVitima}/>
-        <FormControlLabel value='socorrida' control={<Radio onClick={handleLocalDaVitima}/>} label="Vítima socorrida" error={errors?.localDaVitima}/>
+        <FormControlLabel value='No local' control={<Radio onClick={handleLocalDaVitima}/>} label="Vítima no local" error={errors?.localDaVitima}/>
+        <FormControlLabel value='Socorrida' control={<Radio onClick={handleLocalDaVitima}/>} label="Vítima socorrida" error={errors?.localDaVitima}/>
         <FormControlLabel 
         control={ 
           vitimaFoiSocorrida ? 

@@ -71,8 +71,8 @@ export default function RevisaoFormulario({ formValues }) {
           </Typography>
           <Typography gutterBottom>Nome: {nome}</Typography>
           <Typography gutterBottom>Filiação:</Typography>
-          <Typography gutterBottom>{nomeDaMae}</Typography>
-          <Typography gutterBottom>{nomeDoPai}</Typography>
+          <Typography gutterBottom>Mãe: {nomeDaMae}</Typography>
+          <Typography gutterBottom>Pai: {nomeDoPai}</Typography>
           <Typography gutterBottom>D.N: {dn}</Typography>
           <Typography gutterBottom>Sexo: {sexo}</Typography>
           <Typography gutterBottom>Endereço: {enderecoDaVitima}</Typography>

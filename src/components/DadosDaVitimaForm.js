@@ -202,14 +202,14 @@ export default function DadosDaVitimaForm({ onChange, formValues, errors }) {
               onChange={handleEscolaridade}
               error={errors?.escolaridade}
             >
-              <FormControlLabel value="analfabeto" control={<Radio />} label="Analfabeto" />
+              <FormControlLabel value="Analfabeto" control={<Radio />} label="Analfabeto" />
               <FormControlLabel value="EF-incompleto" control={<Radio />} label="E.F Incompleto" />
               <FormControlLabel value="EF-completo" control={<Radio />} label="E.F Completo" />
               <FormControlLabel value="EM-incompleto" control={<Radio />} label="E.M Incompleto" />
               <FormControlLabel value="EM-completo" control={<Radio />} label="E.M Completo" />
               <FormControlLabel value="ES-incompleto" control={<Radio />} label="E.S Incompleto" />
               <FormControlLabel value="ES-completo" control={<Radio />} label="E.S Completo" />
-              <FormControlLabel value="nao-informado" control={<Radio />} label="Não informado" />
+              <FormControlLabel value="Não informado" control={<Radio />} label="Não informado" />
             </RadioGroup>
           </FormControl>
         </Grid>

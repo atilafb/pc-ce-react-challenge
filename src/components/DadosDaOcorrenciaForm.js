@@ -129,9 +129,9 @@ export default function DadosDaOcorrenciaForm({ onChange, formValues, errors }) 
               onChange={handleDiaDaSemana}
               error={errors?.diaDaSemana}
             >
-              <MenuItem value={'segundaFeira'}>Segunda-Feira</MenuItem>
-              <MenuItem value={'tercaFeira'}>Terça-Feira</MenuItem>
-              <MenuItem value={'quartaFeira'}>Quarta-Feira</MenuItem>
+              <MenuItem value={'Segunda-Feira'}>Segunda-Feira</MenuItem>
+              <MenuItem value={'Terça-Feira'}>Terça-Feira</MenuItem>
+              <MenuItem value={'Quarta-Feira'}>Quarta-Feira</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -172,8 +172,8 @@ export default function DadosDaOcorrenciaForm({ onChange, formValues, errors }) 
               onChange={handleCameras}
               error={errors?.cameras}
             >
-              <FormControlLabel value="camera-sim" control={<Radio />} label="Sim" />
-              <FormControlLabel value="camera-nao" control={<Radio />} label="Não" />
+              <FormControlLabel value="Sim" control={<Radio />} label="Sim" />
+              <FormControlLabel value="Não" control={<Radio />} label="Não" />
             </RadioGroup>
           </FormControl>
         </Grid>

@@ -13,7 +13,7 @@ export default function SuspeitosForm({ onChange, formValues, errors }) {
   const nomeCognome = formValues.nomeCognome || ''
   const infoRelevante = formValues.infoRelevante || ''
 
-  const existeSuspeito = suspeitoCheck === 'suspeitos-sim'
+  const existeSuspeito = suspeitoCheck === 'Sim'
 
   const handleSuspeitoCheck = (event) => {
     onChange('suspeitoCheck', event.target.value)
@@ -43,8 +43,8 @@ export default function SuspeitosForm({ onChange, formValues, errors }) {
               value={suspeitoCheck}
               onChange={handleSuspeitoCheck}
             >
-              <FormControlLabel value="suspeitos-sim" control={<Radio onClick={handleSuspeitoCheck} />} label="Sim" error={errors?.suspeitoCheck}/>
-              <FormControlLabel value="suspeitos-nao" control={<Radio onClick={handleSuspeitoCheck} />} label="Não" error={errors?.suspeitoCheck}/>
+              <FormControlLabel value="Sim" control={<Radio onClick={handleSuspeitoCheck} />} label="Sim" error={errors?.suspeitoCheck}/>
+              <FormControlLabel value="Não" control={<Radio onClick={handleSuspeitoCheck} />} label="Não" error={errors?.suspeitoCheck}/>
             </RadioGroup>
           </FormControl>
         </Grid>
