@@ -6,12 +6,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField'
 
-export default function SituacaoDaVitimaForm() {
-  const [checked, setChecked] = useState("");
-  const vitimaSocorrida = checked === 'socorrida'
+export default function SituacaoDaVitimaForm({ onChange, formValues, errors }) {
+  const localDaVitima = formValues.localDaVitima || ''
+  const vitimaFoiSocorrida = localDaVitima === 'socorrida'
 
-  const handleChange = (event) => {
-    setChecked(event.target.value)
+  const handleLocalDaVitima = (event) => {
+    onChange('localDaVitima', event.target.value)
   }
   
   return (
@@ -21,12 +21,14 @@ export default function SituacaoDaVitimaForm() {
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
+        value={localDaVitima}
+        onChange={handleLocalDaVitima}
       >
-        <FormControlLabel value="no-local" control={<Radio onClick={handleChange}/>} label="Vítima no local" />
-        <FormControlLabel value="socorrida" control={<Radio onClick={handleChange}/>} label="Vítima socorrida" />
+        <FormControlLabel value='no-local' control={<Radio onClick={handleLocalDaVitima}/>} label="Vítima no local" error={errors?.localDaVitima}/>
+        <FormControlLabel value='socorrida' control={<Radio onClick={handleLocalDaVitima}/>} label="Vítima socorrida" error={errors?.localDaVitima}/>
         <FormControlLabel 
         control={ 
-          vitimaSocorrida ? 
+          vitimaFoiSocorrida ? 
           (<TextField required id="filled-required" label="Hospital" variant="filled"/>) 
           : 
           (<TextField disabled id="filled-required" label="Hospital" variant="filled"/>)

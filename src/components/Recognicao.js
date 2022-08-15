@@ -19,10 +19,10 @@ import Review from './Review';
 
 const steps = ['Situação da Vítima', 'Dados da Ocorrência', 'Suspeitos', 'Dados da Vítima', 'Review your form'];
 
-function getStepContent(step) {
+function getStepContent(step, onChange, formValues, errors) {
   switch (step) {
     case 0:
-      return <SituacaoDaVitimaForm />;
+      return <SituacaoDaVitimaForm onChange={onChange} formValues={formValues} errors={errors}/>;
     case 1:
       return <DadosDaOcorrenciaForm />;
     case 2:
@@ -38,8 +38,26 @@ function getStepContent(step) {
 
 const theme = createTheme();
 
+const getIsFormValid = (formValues, errors, step) => {
+  if (step === 0) {
+    if (errors.localDaVitima || !formValues.localDaVitima) {
+      return false
+    }
+  }
+  return true
+}
+
+const getFormErrors = (formValues) => {
+    const errors = {}
+    if (formValues.localDaVitima === '') {
+      errors.localDaVitima = 'Local da vitima deve ser preenchido'
+    }
+    return errors
+  }
+
 export default function Recognicao() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [formValues, setFormValues] = React.useState({})
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -48,6 +66,13 @@ export default function Recognicao() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const onFormChange = (fieldName, fieldValue) => {
+    setFormValues({...formValues, [fieldName]:fieldValue})
+  }
+
+  const errors = getFormErrors(formValues)
+  const isValid = getIsFormValid(formValues, errors, activeStep)
 
   return (
     <ThemeProvider theme={theme}>
@@ -93,7 +118,7 @@ export default function Recognicao() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, onFormChange, formValues, errors)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -102,6 +127,7 @@ export default function Recognicao() {
                   )}
 
                   <Button
+                    disabled={!isValid}
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
