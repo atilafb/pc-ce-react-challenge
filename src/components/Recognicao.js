@@ -15,9 +15,9 @@ import SituacaoDaVitimaForm from './SituacaoDaVitimaForm';
 import DadosDaOcorrenciaForm from './DadosDaOcorrenciaForm';
 import SuspeitosForm from './SuspeitosForm';
 import DadosDaVitimaForm from './DadosDaVitimaForm';
-import Review from './Review';
+import RevisaoFormulario from './RevisaoFormulario';
 
-const steps = ['Situação da Vítima', 'Dados da Ocorrência', 'Suspeitos', 'Dados da Vítima', 'Review your form'];
+const steps = ['Situação da Vítima', 'Dados da Ocorrência', 'Suspeitos', 'Dados da Vítima', 'Revisão de Formulário'];
 
 function getStepContent(step, onChange, formValues, errors) {
   switch (step) {
@@ -30,7 +30,7 @@ function getStepContent(step, onChange, formValues, errors) {
     case 3:
       return <DadosDaVitimaForm onChange={onChange} formValues={formValues} errors={errors} />
     case 4:
-      return <Review />
+      return <RevisaoFormulario formValues={formValues}/>
     default:
       throw new Error('Unknown step');
   }
@@ -232,7 +232,6 @@ export default function Recognicao() {
           <Typography component="h1" variant="h4" align="center">
             Recognição
           </Typography>
-          <pre>{JSON.stringify(formValues, null, 2)}</pre>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
               <Step key={label}>
@@ -244,12 +243,10 @@ export default function Recognicao() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Formulário preenchido.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Aguarde enquanto está sendo gerado o PDF.
                 </Typography>
               </React.Fragment>
             ) : (
